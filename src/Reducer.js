@@ -240,19 +240,22 @@ function reducer({ initialState, scenes }) {
 
         // target is a node
         let parent = targetEl.sceneKey;
-        let targetIndex = 0;
+        let targetIndex = -1;
 
-        // target is child of a node
-        if (!targetEl.children) {
-          const targetParent = findElement(state, targetEl.parent, action.type);
-          assert(targetParent, `Cannot find parent for target ${target}`);
-          parent = targetParent.sceneKey;
+        const parentEl = findElement(state, action.parent, action.type);
+        assert(parentEl, `Cannot find element name named ${action.parent} within current state`);
 
-          targetIndex = targetParent.children.indexOf(targetEl);
-          assert(targetIndex > -1, `${target} does not belong to ${targetParent.sceneKey}`);
+        for (let index in parentEl.children) {
+          const child = parentEl.children[index];
+          const result = findElement(child, target, action.type);
+          if (result) {
+            targetIndex = parseInt(index);
+            break;
+          }
         }
 
-        action.parent = parent;
+        assert(targetIndex > -1, `Cannot find element name named ${target} within parent state`)
+
         action.targetIndex = targetIndex;
       }
 
