@@ -56,9 +56,9 @@
     "expect": "^1.14.0",
     "mocha": "^2.4.5",
     "mocha-junit-reporter": "^1.11.1",
-    "react": "15.0.2",
-    "react-addons-test-utils": "15.0.2",
-    "react-dom": "15.0.2",
+    "react": "15.2.0",
+    "react-addons-test-utils": "15.2.0",
+    "react-dom": "15.2.0",
     "react-native": "0.29.x",
     "react-native-mock": "0.2.0",
     "sinon": "^1.17.3"
