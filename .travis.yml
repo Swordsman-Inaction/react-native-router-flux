@@ -16,6 +16,10 @@ branches:
     - master
     - ci-test
 
-before_script:
+install:
   - yarn
   - cd Example && yarn && cd ..
+
+scripts:
+  - yarn test
+  - cd Example && yarn run jest && cd ..
