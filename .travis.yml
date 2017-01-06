@@ -18,10 +18,9 @@ branches:
     - ci-test
 
 before_script:
-  - yarn
   - cd Example && yarn && cd ..
 
 script:
-  - yarn eslint
+  - node node_modules/eslint/bin/eslint index.js src/ test/
   - yarn test
   - cd Example && yarn run jest && cd ..
