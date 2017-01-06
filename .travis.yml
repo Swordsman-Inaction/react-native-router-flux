@@ -4,6 +4,7 @@ node_js:
 os:
   - osx
 cache:
+  - yarn
   - directories:
     - "$TRAVIS_BUILD_DIR/Example/node_modules"
 
@@ -14,6 +15,8 @@ branches:
   only:
     - master
     - ci-test
+install:
+  - pwd
 
 before_script:
   - cd Example && yarn && cd ..
