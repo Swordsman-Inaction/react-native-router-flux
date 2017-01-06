@@ -5,6 +5,10 @@ cache:
   - yarn
   - directories:
     - "$TRAVIS_BUILD_DIR/Example/node_modules"
+
+notifications:
+  email: false
+
 branches:
   only:
     - master
