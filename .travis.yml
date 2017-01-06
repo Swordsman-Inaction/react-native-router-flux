@@ -4,6 +4,7 @@ node_js:
 os:
   - osx
 cache:
+  - yarn
   - directories:
     - "$TRAVIS_BUILD_DIR/node_modules"
     - "$TRAVIS_BUILD_DIR/Example/node_modules"
