@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "6"
+cache:
+  - yarn
+  - directories:
+    - "$TRAVIS_BUILD_DIR/Example/node_modules"
+branches:
+  only:
+    - master
+    - ci-test
+
+before_script:
+  - yarn
+  - cd Example && yarn
