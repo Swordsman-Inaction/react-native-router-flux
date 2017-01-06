@@ -35,6 +35,10 @@ export function assert(expr, failDescription) {
   }
 }
 
+export function testtest() {
+  // test
+}
+
 export default {
   deepestExplicitValueForKey,
   assert,
