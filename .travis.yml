@@ -34,3 +34,4 @@ script:
 
 before_cache:
   - rm -rf Example/node_modules/react-native-router-flux/
+  - rm -f Example/node_modules/.yarn-integrity
