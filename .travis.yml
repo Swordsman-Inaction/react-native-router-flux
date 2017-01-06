@@ -12,4 +12,4 @@ branches:
 
 before_script:
   - yarn
-  - cd Example && yarn
+  - cd Example && yarn && cd ..
