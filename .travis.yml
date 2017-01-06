@@ -23,6 +23,8 @@ install:
 
 before_script:
   - cd Example && yarn && cd ..
+  - cat src/Util.js
+  - cat Example/node_modules/react-native-router-flux/src/Util.js
   - yarn
 
 script:
