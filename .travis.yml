@@ -16,9 +16,11 @@ branches:
     - master
     - ci-test
 before_install:
-  - export PATH=$HOME/.yarn/bin:$PATH
+  - export YARN_GPG=no
 install:
-  - pwd
+  - brew install yarn
+after_install:
+  - export PATH=$HOME/.yarn/bin:$PATH
 
 before_script:
   - cd Example && yarn && cd ..
