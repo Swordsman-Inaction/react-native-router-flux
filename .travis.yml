@@ -24,6 +24,7 @@ after_install:
 
 before_script:
   - cd Example && yarn && cd ..
+  - yarn
 
 script:
   - node node_modules/eslint/bin/eslint index.js src/ test/
