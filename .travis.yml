@@ -14,10 +14,11 @@ branches:
   only:
     - master
     - ci-test
-matrix:
-  - TEST_SUITE=eslint
-  - TEST_SUITE=lib-test
-  - TEST_SUITE=example-jest
+env:
+  matrix:
+    - TEST_SUITE=eslint
+    - TEST_SUITE=lib-test
+    - TEST_SUITE=example-jest
 before_install:
   - export YARN_GPG=no
 install:
