@@ -27,8 +27,6 @@ install:
 before_script:
   - rm -rf Example/node_modules/react-native-router-flux/node_modules
   - cp -r src/ Example/node_modules/react-native-router-flux/src/
-  - cat src/Util.js
-  - cat Example/node_modules/react-native-router-flux/src/Util.js
 
 script:
   - node node_modules/eslint/bin/eslint index.js src/ test/
