@@ -20,7 +20,6 @@ env:
     - TEST_SUITE=lib-test CACHE_NAME=lib-test
     - TEST_SUITE=example-jest CACHE_NAME=example-jest
 before_install:
-  - export PATH="$GEM_HOME/bin:$PATH"
   - export YARN_GPG=no
 install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
