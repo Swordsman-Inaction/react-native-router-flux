@@ -16,22 +16,22 @@ branches:
     - ci-test
 env:
   matrix:
-    - TEST_SUITE=eslint
-    - TEST_SUITE=lib-test
-    - TEST_SUITE=example-jest
+    - TEST_SUITE=eslint CACHE_NAME=eslint
+    - TEST_SUITE=lib-test CACHE_NAME=lib-test
+    - TEST_SUITE=example-jest CACHE_NAME=example-jest
 before_install:
   - export YARN_GPG=no
 install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH=$HOME/.yarn/bin:$PATH
-  - cd Example && yarn && cd ..
-  - yarn
+  - if [ $TEST_SUITE = example-jest ]; then cd Example && yarn && cd ..; fi
+  - if [ $TEST_SUITE = eslint ] || [ $TEST_SUITE = lib-test ]; then yarn; fi
 before_script:
-  - rm -rf Example/node_modules/react-native-router-flux/node_modules
-  - cp -r src/ Example/node_modules/react-native-router-flux/src/
+  - if [ $TEST_SUITE = example-jest ]; then rm -rf Example/node_modules/react-native-router-flux/node_modules; fi
+  - if [ $TEST_SUITE = example-jest ]; then cp -r src/ Example/node_modules/react-native-router-flux/src/; fi
 script:
-  - node node_modules/eslint/bin/eslint index.js src/ test/
-  - yarn test
-  - cd Example && yarn run jest && cd ..
+  - if [ $TEST_SUITE = eslint ]; then node node_modules/eslint/bin/eslint index.js src/ test/; fi
+  - if [ $TEST_SUITE = lib-test ]; then yarn test; fi
+  - if [ $TEST_SUITE = example-jest ]; then cd Example && yarn run jest && cd ..; fi
 before_cache:
-  - rm -rf Example/node_modules/react-native-router-flux/src
+  - if [ $TEST_SUITE = example-jest ]; then rm -rf Example/node_modules/react-native-router-flux/src; fi
