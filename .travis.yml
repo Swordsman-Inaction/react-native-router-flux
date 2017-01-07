@@ -8,14 +8,16 @@ cache:
   - directories:
     - "$TRAVIS_BUILD_DIR/node_modules"
     - "$TRAVIS_BUILD_DIR/Example/node_modules"
-
 notifications:
   email: false
-
 branches:
   only:
     - master
     - ci-test
+matrix:
+  - TEST_SUITE=eslint
+  - TEST_SUITE=lib-test
+  - TEST_SUITE=example-jest
 before_install:
   - export YARN_GPG=no
 install:
@@ -23,15 +25,12 @@ install:
   - export PATH=$HOME/.yarn/bin:$PATH
   - cd Example && yarn && cd ..
   - yarn
-
 before_script:
   - rm -rf Example/node_modules/react-native-router-flux/node_modules
   - cp -r src/ Example/node_modules/react-native-router-flux/src/
-
 script:
   - node node_modules/eslint/bin/eslint index.js src/ test/
   - yarn test
   - cd Example && yarn run jest && cd ..
-
 before_cache:
   - rm -rf Example/node_modules/react-native-router-flux/src
